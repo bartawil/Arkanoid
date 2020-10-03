@@ -1,5 +1,3 @@
-//209215490
-
 import biuoop.GUI;
 import biuoop.DrawSurface;
 
