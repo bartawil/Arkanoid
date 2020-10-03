@@ -1,5 +1,5 @@
-import biuoop.GUI;
 import biuoop.DrawSurface;
+import biuoop.GUI;
 
 /**
  * A bouncing ball animation class.
