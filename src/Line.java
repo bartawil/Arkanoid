@@ -223,4 +223,26 @@ public class Line {
         return (this.start == other.start && this.end == other.end);
     }
 
+    /**
+     * return the closest intersection point to the start of the line.
+     *
+     * @param rect - rectangle
+     * @return null/closest intersection point
+     */
+    public Point closestIntersectionToStartOfLine(Rectangle rect) {
+        Line l = new Line(this.start, this.end);
+        if (!rect.intersectionPoints(l).isEmpty()) {
+            int listSize = rect.intersectionPoints(l).size();
+            // min line index of the list
+            int min = 0;
+            for (int i = 1; i < listSize; i++) {
+                if (this.start.distance(rect.intersectionPoints(l).get(min))
+                        > this.start.distance(rect.intersectionPoints(l).get(i))) {
+                    min++;
+                }
+            }
+            return rect.intersectionPoints(l).get(min);
+        }
+        return null;
+    }
 }
