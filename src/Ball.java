@@ -7,11 +7,12 @@ import java.awt.Color;
  *
  * @author Bar Tawil
  */
-public class Ball {
+public class Ball implements Sprite {
     private Point center;
     private int r;
     private Color color;
     private Velocity velocity;
+    private GameEnvironment gameEnvironment;
 
     /**
      * Construct a ball given center point, radius and color.
@@ -92,11 +93,45 @@ public class Ball {
     }
 
     /**
+     * set a new game environment.
+     */
+    public void setGameEnvironment() {
+        this.gameEnvironment = new GameEnvironment();
+    }
+
+    /**
+     * @return the game environment
+     */
+    public GameEnvironment getGameEnvironment() {
+        return this.gameEnvironment;
+    }
+
+    /**
      * moving the ball.
      */
     public void moveOneStep() {
-        this.center = getVelocity().applyToPoint(this.center);
+        Line line = new Line(this.center, getVelocity().applyToPoint(this.center));
+        CollisionInfo info = this.gameEnvironment.getClosestCollision(line);
+        if (this.gameEnvironment.getClosestCollision(line) == null) {
+            this.center = this.getVelocity().applyToPoint(this.center);
+        } else {
+            Velocity prev = new Velocity(this.velocity.getDx(), this.velocity.getDy());
+            this.velocity = info.collisionObject().hit(info.collisionPoint(), this.getVelocity());
+            if (prev.getDx() < velocity.getDx()) {
+                this.center = new Point(info.collisionPoint().getX() + 0.5 * r, info.collisionPoint().getY());
+            }
+            if (prev.getDx() > velocity.getDx()) {
+                this.center = new Point(info.collisionPoint().getX() - 0.5 * r, info.collisionPoint().getY());
+            }
+            if (prev.getDy() < velocity.getDy()) {
+                this.center = new Point(info.collisionPoint().getX(), info.collisionPoint().getY() + 0.5 * r);
+            }
+            if (prev.getDy() > velocity.getDy()) {
+                this.center = new Point(info.collisionPoint().getX(), info.collisionPoint().getY() - 0.5 * r);
+            }
+        }
     }
+
 
     /**
      * replacing the center point if its too close to the border.
@@ -142,12 +177,25 @@ public class Ball {
         this.center = getVelocity().applyToPoint(this.center);
     }
 
-
     /**
      * @param surface - draw the ball on the given DrawSurface
      */
     public void drawOn(DrawSurface surface) {
         surface.setColor(this.color);
         surface.fillCircle(getX(), getY(), getSize());
+    }
+
+    /**
+     * notify the sprite that time has passed.
+     */
+    public void timePassed() {
+        moveOneStep();
+    }
+
+    /**
+     * @param g - add the ball sprite to the game class
+     */
+    public void addToGame(Game g) {
+        g.addSprite(this);
     }
 }
