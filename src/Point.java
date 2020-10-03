@@ -50,5 +50,19 @@ public class Point {
     public double getY() {
         return this.y;
     }
+
+    /**
+     * @param dx - set the new x coordinate of the point
+     */
+    public void setDx(double dx) {
+        this.x = dx;
+    }
+
+    /**
+     * @param dy - set the new y coordinate of the point
+     */
+    public void setDy(double dy) {
+        this.y = dy;
+    }
 }
 
