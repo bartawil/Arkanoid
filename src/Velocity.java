@@ -1,13 +1,11 @@
 /**
  * Velocity class - specifies the change in position on the `x` and the `y` axis's.
  *
- * @author Bar Tawil
+ *  @author Bar Tawil
  */
 public class Velocity {
     private double x;
     private double y;
-    private double angle;
-    private double speed;
 
     /**
      * Construct an x and y values for the next center point.
@@ -21,6 +19,7 @@ public class Velocity {
     }
 
     /**
+     *
      * Construct an x and y values for the next center point by angle and speed.
      *
      * @param angle - move angle
@@ -31,44 +30,46 @@ public class Velocity {
         double dx = Math.sin(Math.toRadians(angle)) * speed;
         double dy = -Math.cos(Math.toRadians(angle)) * speed;
         return new Velocity(dx, dy);
+
     }
 
     /**
-     * @return - how much we move on x axis.
+     * @return - how much we move on x axis
      */
     public double getDx() {
-        return this.x;
+        return  this.x;
     }
 
     /**
-     * @return - how much we move on y axis.
+     * @return - how much we move on y axis
      */
     public double getDy() {
-        return this.y;
+        return  this.y;
     }
 
     /**
-     * @param dx - set the new x coordinate of the center point.
+     * @param dx - set the new x coordinate of the center point
      */
     public void setDx(double dx) {
         this.x = dx;
     }
 
     /**
-     * @param dy - set the new y coordinate of the center point.
+     * @param dy - set the new y coordinate of the center point
      */
     public void setDy(double dy) {
         this.y = dy;
     }
 
     /**
+     *
      * Take a point with position (x,y) and return a new point.
      *
      * @param p - random point
-     * @return - new point with position (x+dx, y+dy)
+     * @return with position (x+dx, y+dy)
      */
     public Point applyToPoint(Point p) {
-        return new Point(p.getX() + this.x, p.getY() + this.y);
+        return  new Point(p.getX() + this.x, p.getY() + this.y);
     }
 }
 
