@@ -1,10 +1,11 @@
 package sprites;
+
 import geometry.Point;
 
 /**
  * Velocity class - specifies the change in position on the `x` and the `y` axis's.
  *
- *  @author Bar Tawil
+ * @author Bar Tawil
  */
 public class Velocity {
     private double x;
@@ -40,14 +41,14 @@ public class Velocity {
      * @return - how much we move on x axis
      */
     public double getDx() {
-        return  this.x;
+        return this.x;
     }
 
     /**
      * @return - how much we move on y axis
      */
     public double getDy() {
-        return  this.y;
+        return this.y;
     }
 
     /**
@@ -65,14 +66,13 @@ public class Velocity {
     }
 
     /**
-     *
      * Take a point with position (x,y) and return a new point.
      *
      * @param p - random point
      * @return with position (x+dx, y+dy)
      */
     public Point applyToPoint(Point p) {
-        return  new Point(p.getX() + this.x, p.getY() + this.y);
+        return new Point(p.getX() + this.x, p.getY() + this.y);
     }
 }
 

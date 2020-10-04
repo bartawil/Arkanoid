@@ -25,6 +25,15 @@ public class ScoreTrackingListener implements HitListener {
      * @param hitter   - the Ball that's doing the hitting
      */
     public void hitEvent(Block beingHit, Ball hitter) {
-        this.currentScore.increase(5);
+       this.currentScore.increase(5);
+    }
+
+
+    /**
+     *
+     * @return - current game score.
+     */
+    public Counter getCurrentScore() {
+        return  this.currentScore;
     }
 }

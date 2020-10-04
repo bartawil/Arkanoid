@@ -1,7 +1,7 @@
 package listeners;
 
 import collidables.Block;
-import game.Game;
+import game.GameLevel;
 import sprites.Ball;
 
 /**
@@ -10,7 +10,7 @@ import sprites.Ball;
  * @author Bar Tawil
  */
 public class BallRemover implements HitListener {
-    private Game game;
+    private GameLevel game;
     private Counter remainingBalls;
 
     /**
@@ -19,7 +19,7 @@ public class BallRemover implements HitListener {
      * @param game         - this game
      * @param removedBalls - balls removed from game
      */
-    public BallRemover(Game game, Counter removedBalls) {
+    public BallRemover(GameLevel game, Counter removedBalls) {
         this.game = game;
         this.remainingBalls = removedBalls;
     }

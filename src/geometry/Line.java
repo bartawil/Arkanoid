@@ -206,8 +206,8 @@ public class Line {
     }
 
     /**
-     * @param other - the other line we intersect.
-     * @return - the intersection point if the lines actually intersect.
+     * @param other the other line we intersect
+     * @return Returns the intersection point if the lines actually intersect
      */
     public Point intersectionWith(Line other) {
         if (isIntersecting(other)) {
@@ -218,8 +218,8 @@ public class Line {
     }
 
     /**
-     * @param other - the other line we compare.
-     * @return true - if the lines are equal, false - otherwise.
+     * @param other the other line we compare
+     * @return true is the lines are equal, false otherwise
      */
     public boolean equals(Line other) {
         return (this.start == other.start && this.end == other.end);

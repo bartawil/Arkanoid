@@ -1,3 +1,5 @@
+
+
 package geometry;
 
 /**
@@ -10,7 +12,7 @@ public class Point {
     private double y;
 
     /**
-     * Construct a point by given x and y coordinates.
+     * Construct a point given x and y coordinates.
      *
      * @param x the x coordinate
      * @param y the y coordinate
@@ -21,8 +23,8 @@ public class Point {
     }
 
     /**
-     * @param other - point we measure the distance to.
-     * @return - the distance between those points.
+     * @param other a point to measure the distance between two points
+     * @return the distance to the other point
      */
     public double distance(Point other) {
         double dx = this.x - other.getX();
@@ -36,7 +38,10 @@ public class Point {
      */
 
     public boolean equals(Point other) {
-        return (this.x == other.getX() && this.y == other.getY());
+        if (other == null) {
+            return false;
+        }
+        return (this.x == other.x && this.y == other.y);
     }
 
     /**

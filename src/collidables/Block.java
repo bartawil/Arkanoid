@@ -1,16 +1,20 @@
 package collidables;
 
 import biuoop.DrawSurface;
-import game.Game;
+
+import game.GameLevel;
 import geometry.Point;
 import geometry.Rectangle;
+
 import listeners.HitListener;
 import listeners.HitNotifier;
+
 import sprites.Ball;
 import sprites.Sprite;
 import sprites.Velocity;
 
 import java.awt.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +37,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
     public Block(Rectangle rect, Color color) {
         this.rect = rect;
         this.color = color;
-        this.hitListeners = new ArrayList<HitListener>();
+        this.hitListeners = new ArrayList<>();
     }
 
     /**
@@ -48,7 +52,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
      *
      * @param collisionPoint  - collision point
      * @param currentVelocity - current hit velocity
-     * @param hitter - the ball that hit
+     * @param hitter          - the ball that hit
      * @return - the new velocity expected after the hit
      */
     public Velocity hit(Ball hitter, Point collisionPoint, Velocity currentVelocity) {
@@ -71,7 +75,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
         surface.setColor(this.color);
         surface.fillRectangle((int) this.rect.getUpperLeft().getX(), (int) this.rect.getUpperLeft().getY(),
                 (int) this.rect.getWidth(), (int) this.rect.getHeight());
-        surface.setColor(new Color(242, 255, 204));
+        surface.setColor(new Color(187, 202, 182));
         surface.drawRectangle((int) this.rect.getUpperLeft().getX(), (int) this.rect.getUpperLeft().getY(),
                 (int) this.rect.getWidth(), (int) this.rect.getHeight());
     }
@@ -84,7 +88,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
     /**
      * @param g - add the sprite and the collidable to the game.
      */
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.addSprite(this);
         g.addCollidable(this);
     }
@@ -93,24 +97,23 @@ public class Block implements Collidable, Sprite, HitNotifier {
      * removes the block from the game.
      * @param game - this game
      */
-    public void removeFromGame(Game game) {
+    public void removeFromGame(GameLevel game) {
         game.removeCollidable(this);
         game.removeSprite(this);
     }
 
-    @Override
-    public void addHitListener(HitListener hl) {
+    @Override public void addHitListener(HitListener hl) {
         this.hitListeners.add(hl);
     }
 
-    @Override
-    public void removeHitListener(HitListener hl) {
+    @Override public void removeHitListener(HitListener hl) {
         this.hitListeners.remove(hl);
     }
 
     /**
      * this method will be called whenever a hit() occurs,
      * and will notify all of the registered HitListener objects by calling their hitEvent method.
+     *
      * @param hitter - the ball that his the block
      */
     private void notifyHit(Ball hitter) {

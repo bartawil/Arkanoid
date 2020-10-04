@@ -2,8 +2,8 @@ package sprites;
 
 import biuoop.DrawSurface;
 import collidables.CollisionInfo;
-import game.Game;
 import game.GameEnvironment;
+import game.GameLevel;
 import geometry.Line;
 import geometry.Point;
 
@@ -189,6 +189,8 @@ public class Ball implements Sprite {
      * @param surface - draw the ball on the given DrawSurface
      */
     public void drawOn(DrawSurface surface) {
+        surface.setColor(Color.black);
+        surface.drawCircle(getX(), getY(), getSize());
         surface.setColor(this.color);
         surface.fillCircle(getX(), getY(), getSize());
     }
@@ -203,7 +205,7 @@ public class Ball implements Sprite {
     /**
      * @param g - add the ball sprite to the game class
      */
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.addSprite(this);
     }
 
@@ -211,7 +213,7 @@ public class Ball implements Sprite {
      * removes the ball from the game.
      * @param game - this game
      */
-    public void removeFromGame(Game game) {
+    public void removeFromGame(GameLevel game) {
         game.removeSprite(this);
     }
 }

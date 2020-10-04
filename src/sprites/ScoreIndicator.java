@@ -1,7 +1,7 @@
 package sprites;
 
 import biuoop.DrawSurface;
-import game.Game;
+import game.GameLevel;
 
 import java.awt.Color;
 
@@ -11,21 +11,24 @@ import java.awt.Color;
  * @author Bar Tawil
  */
 public class ScoreIndicator implements Sprite {
-    private Game game;
+    private GameLevel game;
 
     /**
      * Construct a ScoreIndicator.
      *
      * @param game - the game
      */
-    public ScoreIndicator(Game game) {
+    public ScoreIndicator(GameLevel game) {
         this.game = game;
     }
 
     @Override
     public void drawOn(DrawSurface d) {
-        d.setColor(Color.BLACK);
+        d.setColor(new Color(234, 253, 227));
+        d.fillRectangle(0, 0, 800, 20);
+        d.setColor(new Color(0, 128, 128));
         d.drawText(360, 15, "Score: " + this.game.getScoreCounter().getValue(), 15);
+        d.drawText(620, 15, "Level Name:  " + this.game.getLevelName(), 15);
     }
 
     /**

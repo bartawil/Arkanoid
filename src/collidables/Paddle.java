@@ -2,7 +2,7 @@ package collidables;
 
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
-import game.Game;
+import game.GameLevel;
 import geometry.Point;
 import geometry.Rectangle;
 import sprites.Ball;
@@ -22,7 +22,7 @@ public class Paddle implements Sprite, Collidable {
     private Color color;
     private static final double SURFACE_WIDTH = 800;
     private static final double PADDLE_MOVES = 10;
-    private static final double BORDER_WIDTH = 20;
+    private static final double BORDER_WIDTH = 25;
 
     /**
      *
@@ -80,7 +80,7 @@ public class Paddle implements Sprite, Collidable {
         d.setColor(this.color);
         d.fillRectangle((int) this.peddle.getUpperLeft().getX(), (int) this.peddle.getUpperLeft().getY(),
                 (int) this.peddle.getWidth(), (int) this.peddle.getHeight());
-        d.setColor(Color.white);
+        d.setColor(new Color(64, 64, 32));
         d.drawRectangle((int) this.peddle.getUpperLeft().getX(), (int) this.peddle.getUpperLeft().getY(),
                 (int) this.peddle.getWidth(), (int) this.peddle.getHeight());
     }
@@ -128,7 +128,7 @@ public class Paddle implements Sprite, Collidable {
     /**
      * @param g - Add this paddle to the game.
      */
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.addCollidable(this);
         g.addSprite(this);
     }
