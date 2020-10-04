@@ -1,4 +1,11 @@
+package sprites;
+
 import biuoop.DrawSurface;
+import collidables.CollisionInfo;
+import game.Game;
+import game.GameEnvironment;
+import geometry.Line;
+import geometry.Point;
 
 import java.awt.Color;
 
@@ -94,9 +101,10 @@ public class Ball implements Sprite {
 
     /**
      * set a new game environment.
+     * @param ge - the game environment
      */
-    public void setGameEnvironment() {
-        this.gameEnvironment = new GameEnvironment();
+    public void setGameEnvironment(GameEnvironment ge) {
+        this.gameEnvironment = ge;
     }
 
     /**
@@ -116,7 +124,7 @@ public class Ball implements Sprite {
             this.center = this.getVelocity().applyToPoint(this.center);
         } else {
             Velocity prev = new Velocity(this.velocity.getDx(), this.velocity.getDy());
-            this.velocity = info.collisionObject().hit(info.collisionPoint(), this.getVelocity());
+            this.velocity = info.collisionObject().hit(this, info.collisionPoint(), this.getVelocity());
             if (prev.getDx() < velocity.getDx()) {
                 this.center = new Point(info.collisionPoint().getX() + 0.5 * r, info.collisionPoint().getY());
             }
@@ -197,5 +205,13 @@ public class Ball implements Sprite {
      */
     public void addToGame(Game g) {
         g.addSprite(this);
+    }
+
+    /**
+     * removes the ball from the game.
+     * @param game - this game
+     */
+    public void removeFromGame(Game game) {
+        game.removeSprite(this);
     }
 }

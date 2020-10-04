@@ -1,9 +1,11 @@
+import game.Game;
+
 /**
  * a Game class.
  *
  * @author Bar Tawil
  */
-public class Ass3Game {
+public class Ass5Game {
     /**
      * run the game.
      * @param args - none

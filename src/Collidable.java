@@ -1,3 +1,10 @@
+package collidables;
+
+import geometry.Point;
+import geometry.Rectangle;
+import sprites.Ball;
+import sprites.Velocity;
+
 /**
  * This interface will be used by things that can be collided with.
  *
@@ -15,5 +22,5 @@ public interface Collidable {
      * @param currentVelocity - a given velocity.
      * @return - the new velocity expected after the hit (based on the force the object inflicted on us).
      */
-    Velocity hit(Point collisionPoint, Velocity currentVelocity);
+    Velocity hit(Ball hitter, Point collisionPoint, Velocity currentVelocity);
 }

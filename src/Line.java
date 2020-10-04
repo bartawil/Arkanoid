@@ -1,3 +1,5 @@
+package geometry;
+
 /**
  * A Line class.
  *
@@ -32,14 +34,14 @@ public class Line {
     }
 
     /**
-     * @return the length of the line.
+     * @return the length of the line
      */
     public double length() {
         return this.start.distance(this.end);
     }
 
     /**
-     * @return the middle point of the line.
+     * @return the middle point of the line
      */
     public Point middle() {
         double mx = ((this.start.getX() + this.end.getX())) / 2;
@@ -48,14 +50,14 @@ public class Line {
     }
 
     /**
-     * @return the start point of the line.
+     * @return the start point of the line
      */
     public Point start() {
         return this.start;
     }
 
     /**
-     * @return the end point of the line.
+     * @return the end point of the line
      */
     public Point end() {
         return this.end;
@@ -64,8 +66,8 @@ public class Line {
     /**
      * gets two lines and find if their slopes equal.
      *
-     * @param other - other line.
-     * @return if equals - true, else - false.
+     * @param other - other line
+     * @return if equals - true, else - false
      */
     public boolean equalSlope(Line other) {
         // finds our line slope
@@ -95,8 +97,8 @@ public class Line {
     /**
      * the func founds the intersection point of two equations.
      *
-     * @param other - other line.
-     * @return Point val - the intersection point.
+     * @param other - other line
+     * @return Point val - the intersection point
      */
     public Point equationsIntersection(Line other) {
         // find equations like: y = mx +b

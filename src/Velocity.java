@@ -1,3 +1,6 @@
+package sprites;
+import geometry.Point;
+
 /**
  * Velocity class - specifies the change in position on the `x` and the `y` axis's.
  *

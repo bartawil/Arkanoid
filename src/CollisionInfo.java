@@ -1,3 +1,7 @@
+package collidables;
+
+import geometry.Point;
+
 /**
  * A CollisionInfo class.
  *

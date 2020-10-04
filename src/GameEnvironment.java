@@ -1,3 +1,10 @@
+package game;
+
+import collidables.Collidable;
+import collidables.CollisionInfo;
+import geometry.Line;
+import geometry.Rectangle;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -56,5 +63,13 @@ public class GameEnvironment {
         } else {
             return null;
         }
+    }
+
+    /**
+     *
+     * @return - the list of Collidables.
+     */
+    public List<Collidable> getCollidables() {
+        return this.collidables;
     }
 }

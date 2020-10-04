@@ -1,3 +1,5 @@
+package sprites;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,7 +33,8 @@ public class SpriteCollection {
      * call timePassed() on all sprites.
      */
     public void notifyAllTimePassed() {
-        for (Sprite s : sprites) {
+        List<Sprite> spritesList = new LinkedList<>(this.sprites);
+        for (Sprite s : spritesList) {
             s.timePassed();
         }
     }
@@ -43,5 +46,13 @@ public class SpriteCollection {
         for (Sprite s : sprites) {
             s.drawOn(d);
         }
+    }
+
+
+    /**
+     * @return - the list of sprites.
+     */
+    public List<Sprite> getSprites() {
+        return this.sprites;
     }
 }

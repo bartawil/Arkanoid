@@ -1,3 +1,5 @@
+package geometry;
+
 /**
  * A Point class.
  *
@@ -29,8 +31,8 @@ public class Point {
     }
 
     /**
-     * @param other - the point we compare to.
-     * @return return - true if the points are equal, false otherwise.
+     * @param other the other point we compare to
+     * @return return true if the points are equal, false otherwise
      */
 
     public boolean equals(Point other) {
@@ -38,14 +40,14 @@ public class Point {
     }
 
     /**
-     * @return the x coordinate.
+     * @return the x coordinate
      */
     public double getX() {
         return this.x;
     }
 
     /**
-     * @return the y coordinate.
+     * @return the y coordinate
      */
     public double getY() {
         return this.y;

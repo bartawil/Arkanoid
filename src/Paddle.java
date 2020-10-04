@@ -1,7 +1,13 @@
-
+package collidables;
 
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
+import game.Game;
+import geometry.Point;
+import geometry.Rectangle;
+import sprites.Ball;
+import sprites.Sprite;
+import sprites.Velocity;
 
 import java.awt.Color;
 
@@ -19,6 +25,7 @@ public class Paddle implements Sprite, Collidable {
     private static final double BORDER_WIDTH = 20;
 
     /**
+     *
      * Construct a paddle given rectangle, Keyboard Sensor and color.
      *
      * @param rect  - rectangle size
@@ -88,9 +95,10 @@ public class Paddle implements Sprite, Collidable {
     /**
      * @param collisionPoint  -the collision Point.
      * @param currentVelocity - a given velocity.
+     * @param hitter - the ball that hit
      * @return - new velocity.
      */
-    public Velocity hit(Point collisionPoint, Velocity currentVelocity) {
+    public Velocity hit(Ball hitter, Point collisionPoint, Velocity currentVelocity) {
         Velocity v = currentVelocity;
         double speed = Math.sqrt(v.getDx() * v.getDx() + v.getDy() * v.getDy());
         double secWidth = (this.peddle.getWidth() / 5);
